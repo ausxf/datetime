@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+
+body{
+height:100vh;
+margin:0px;
+display:flex;
+justify-content:center;
+align-items:center;
+font-family:cursive;
+border-style:solid;
+background-color:slateblue;
+}
+.mainc{
+width:300px;
+background-color:white;
+text-align:center;
+border-radius:10px;
+box-shadow:0 4px 8px rgba(0,0,0,.3);
+overflow:hidden;
+}
+.month{
+background-color:orangered;
+margin:0;
+color:white;
+padding:10px;
+font-size:30px;
+font-weight:bold;
+}
+.day{
+font-size:23px;
+color:grey;
+}
+.dayNumber{
+font-size:77px;
+margin:0;
+}
+.Tahun{
+margin:20px 0;
+font-size:23px;
+color:grey;
+}
+.time{
+background-color:orangered;
+margin:0;
+color:white;
+padding:10px;
+font-size:30px;
+font-weight:bold;
+}
+
+</style>
+</head>
+<body>
+
+<div class="mainc">
+<p class="time">time</p>
+<p class="month">Bulan</p>
+<p class="day">Khamis</p>
+<p class="dayNumber">28</p>
+<p class="Tahun">Tahun</p>
+</div>
+
+<script>
+var bulan = document.querySelector(".month");
+var dayy = document.querySelector(".day");
+var dayN = document.querySelector(".dayNumber");
+var thn = document.querySelector(".Tahun");
+var tme = document.querySelector(".time");
+
+var dte = new Date();
+var dte1 = dte.getDate();
+var dte2 = dte.getFullYear();
+var dte3 = dte.toLocaleString('default',{month:'long'});
+var dte4 = dte.toLocaleString('default',{weekday:'long'});
+
+
+function formatAMPM(date) {
+  var hours = date.getHours();
+  var minutes = date.getMinutes();
+  var ampm = hours >= 12 ? 'PM' : 'AM';
+  hours = hours % 12;
+  hours = hours ? hours : 12; // the hour '0' should be '12'
+  minutes = minutes < 10 ? '0'+minutes : minutes;
+  var strTime = hours + ':' + minutes + ' ' + ampm;
+  return strTime;
+}
+
+var timee = formatAMPM(new Date);
+
+dayN.innerText = dte1;
+thn.innerText = dte2;
+bulan.innerText = dte3;
+dayy.innerText = dte4;
+tme.innerText = timee;
+
+
+
+</script>
+
+</body>
+</html>
